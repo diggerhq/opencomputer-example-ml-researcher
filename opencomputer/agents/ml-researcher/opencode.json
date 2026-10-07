@@ -1,0 +1,15 @@
+{
+  "tools": {
+    "shell": true,
+    "read": true,
+    "write": true,
+    "glob": true,
+    "grep": true
+  },
+  "permission": {
+    "shell": "allow",
+    "read": "allow",
+    "write": "allow",
+    "external_directory": "allow"
+  }
+}

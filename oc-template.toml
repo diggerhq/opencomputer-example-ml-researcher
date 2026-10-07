@@ -1,0 +1,40 @@
+schema = 1
+
+[template]
+name = "ML Researcher"
+description = "Researches an in-house MCP knowledge base, launches training experiments on AWS and GCP through their CLIs, benchmarks candidates, and iterates until one beats the deployed baseline."
+documentation = "https://github.com/diggerhq/opencomputer-example-ml-researcher"
+default_project_name = "ml-researcher"
+
+[template.first_run]
+agent = "ml-researcher"
+prompt = "Run research_and_plan: read the KB, pin the baseline and guards, check cloud_preflight, and propose a round of up to 5 experiments to beat the deployed model. Do not launch anything."
+
+# Cloud credentials are agent runtime variables — the sandbox shell (aws /
+# gcloud CLIs) inherits them. All optional: a missing provider is reported by
+# cloud_preflight and skipped instead of failing.
+
+[template.runtime_variables.AWS_ACCESS_KEY_ID]
+description = "AWS access key ID for the account experiments run in."
+required = false
+
+[template.runtime_variables.AWS_SECRET_ACCESS_KEY]
+description = "AWS secret access key paired with AWS_ACCESS_KEY_ID."
+required = false
+
+[template.runtime_variables.AWS_SESSION_TOKEN]
+description = "Optional session token for temporary AWS credentials."
+required = false
+
+[template.runtime_variables.AWS_DEFAULT_REGION]
+description = "Default AWS region for jobs, e.g. us-east-1."
+required = false
+example = "us-east-1"
+
+[template.runtime_variables.GCP_SERVICE_ACCOUNT_JSON]
+description = "Service-account JSON contents (the whole JSON document) for GCP experiments."
+required = false
+
+[template.runtime_variables.GCP_PROJECT_ID]
+description = "GCP project that hosts Vertex AI jobs and the artifact bucket."
+required = false

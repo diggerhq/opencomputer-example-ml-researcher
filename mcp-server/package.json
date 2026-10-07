@@ -1,0 +1,21 @@
+{
+  "name": "research-kb-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Dummy in-house research knowledge base MCP server for the ml-researcher OpenComputer example.",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}

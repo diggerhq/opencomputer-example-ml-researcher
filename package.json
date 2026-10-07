@@ -1,0 +1,22 @@
+{
+  "name": "opencomputer-example-ml-researcher",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "opencomputer": "opencomputer",
+    "dev": "opencomputer dev",
+    "build": "tsc --noEmit",
+    "check": "opencomputer doctor",
+    "session": "opencomputer session",
+    "deploy": "opencomputer deploy"
+  },
+  "dependencies": {
+    "@opencomputer/agent": "^0.9.0"
+  },
+  "devDependencies": {
+    "@opencomputer/cli": "^0.7.18",
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}

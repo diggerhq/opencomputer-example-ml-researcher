@@ -1,11 +1,11 @@
 ---
 name: gcp-experiments
-description: Runbook for launching training experiments on GCP through the gcloud CLI inside the shell tool — install, service-account auth, Vertex AI custom job submit/poll/teardown. Use whenever an experiment targets GCP.
+description: Runbook for launching training experiments on GCP through the gcloud CLI inside sandbox_exec — install, service-account auth, Vertex AI custom job submit/poll/teardown. Use whenever an experiment targets GCP.
 ---
 
 # GCP experiments
 
-Everything runs through `shell`. Commands are killed at the call's
+Everything runs through `sandbox_exec`. Commands are killed at the call's
 timeout — submit async cloud jobs and poll with short status commands instead
 of watching a long-running process.
 

@@ -1,11 +1,11 @@
 ---
 name: aws-experiments
-description: Runbook for launching training experiments on AWS through the aws CLI inside the shell tool — install, auth check, job submit/poll/teardown patterns. Use whenever an experiment targets AWS.
+description: Runbook for launching training experiments on AWS through the aws CLI inside sandbox_exec — install, auth check, job submit/poll/teardown patterns. Use whenever an experiment targets AWS.
 ---
 
 # AWS experiments
 
-Everything runs through `shell`. Commands are killed at the call's
+Everything runs through `sandbox_exec`. Commands are killed at the call's
 timeout — submit async cloud jobs and poll with short status commands instead
 of watching a long-running process. Writes that complete before the timeout
 persist in the workspace and on AWS.

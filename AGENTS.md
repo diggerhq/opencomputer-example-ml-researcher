@@ -2,7 +2,7 @@
 
 This repository is a standalone OpenComputer example. Keep it focused on one
 flow: research the in-house MCP knowledge base, launch training experiments on
-AWS and GCP through their CLIs in `shell`, benchmark artifacts, and
+AWS and GCP through their CLIs in `sandbox_exec`, benchmark artifacts, and
 iterate to beat the deployed baseline.
 
 ## Rules
@@ -12,7 +12,7 @@ iterate to beat the deployed baseline.
   edits after deploying `mcp-server/`.
 - Keep `defineMcpServer` URLs HTTPS literals — the CLI collects them at build
   time and env-based URLs do not work.
-- `shell` terminates descendants when a command ends; keep cloud work in
+- `sandbox_exec` terminates descendants when a command ends; keep cloud work in
   submit/poll form, never persistent watchers.
 - `tools/benchmark.ts` is a deterministic stand-in for a real harness. Keep its
   simulated scoring clearly marked and deterministic on the same inputs.

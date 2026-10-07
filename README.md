@@ -6,7 +6,7 @@ research loop:
 1. **Reads an in-house MCP knowledge base** — program briefs, prior experiment
    results, dataset notes, evaluation pitfalls — attached with `useMcpServer`.
 2. **Launches training experiments on AWS and GCP** — the agent gets a real
-   shell (`shell`) in its own sandbox computer and drives the `aws` and
+   shell (`sandbox_exec`) in its own sandbox computer and drives the `aws` and
    `gcloud` CLIs (bootstrap, auth, job submit, poll, teardown) following the
    bundled runbook skills.
 3. **Benchmarks candidates and iterates** — code-defined `benchmark_*` tools
@@ -102,7 +102,7 @@ launches cloud jobs without approval.
 
 ## Notes
 
-- `shell` commands die at the call timeout; the runbooks therefore
+- `sandbox_exec` commands die at the call timeout; the runbooks therefore
   submit async cloud jobs and poll with short status calls.
 - The agent is instructed to tag every resource `program=triage-v5`, early-kill
   underwater runs, and stop compute at the end of a round.

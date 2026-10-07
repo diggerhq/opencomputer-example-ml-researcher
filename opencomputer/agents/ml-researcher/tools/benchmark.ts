@@ -8,7 +8,7 @@ import { defineTool } from "@opencomputer/agent";
  * score is a stable function of the artifact + config + seed, so the example
  * workflow (research → train → evaluate → compare) runs end to end without a
  * real harness. To wire the real harness, replace `run()` with a call to your
- * evaluation service (or a shell invocation of your eval CLI) and keep
+ * evaluation service (or a sandbox_exec invocation of your eval CLI) and keep
  * the schemas — the agent's procedure does not change.
  */
 

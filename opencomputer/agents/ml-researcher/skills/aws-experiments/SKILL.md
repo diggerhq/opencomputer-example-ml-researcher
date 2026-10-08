@@ -30,14 +30,26 @@ If the install fails because the OS lacks `dnf`/`unzip`, fall back to
 
 ## 2. Verify credentials
 
-Credentials arrive as runtime variables (never print them):
+AWS credentials arrive as the EXP_AWS_* runtime variables — `AWS_*` names are
+reserved by the platform, which injects its own AWS_REGION / Lambda host
+variables into the sandbox. Export the mapping inside the same command as each
+CLI call (sandbox_exec does not persist exports between calls), and never
+print the values:
 
 ```bash
+export AWS_ACCESS_KEY_ID="$EXP_AWS_ACCESS_KEY_ID" \
+       AWS_SECRET_ACCESS_KEY="$EXP_AWS_SECRET_ACCESS_KEY" \
+       AWS_DEFAULT_REGION="${EXP_AWS_DEFAULT_REGION:-us-east-1}"
+[ -n "$EXP_AWS_SESSION_TOKEN" ] && export AWS_SESSION_TOKEN="$EXP_AWS_SESSION_TOKEN"
 aws sts get-caller-identity
 ```
 
-If this fails, credentials are missing or expired — report it and stop; do not
-retry in a loop or hunt for values.
+If EXP_AWS_* is unset, `aws` still authenticates via the sandbox's inherited
+host IAM role — that is the platform's account, not yours. Always check the
+account id in the identity output before submitting anything; never launch
+jobs into an account you were not pointed at. If the identity call fails,
+credentials are missing or expired — report it and stop; do not retry in a
+loop or hunt for values.
 
 ## 3. Submit a training job
 

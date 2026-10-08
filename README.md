@@ -57,10 +57,13 @@ url: "https://<your-tunnel-or-host>/mcp",
 
 ## 2. Configure cloud credentials (optional per provider)
 
-The agent's sandbox shell inherits [agent runtime variables], so the `aws`
-and `gcloud` CLIs authenticate exactly as they would on a workstation. Set only
-the providers you want — `cloud_preflight` tells the agent which are usable
-and it plans around the rest.
+The agent's sandbox shell inherits [agent runtime variables]. The `AWS_*`
+names are reserved by the platform (the sandbox injects its own host vars), so
+AWS creds are stored as `EXP_AWS_*` and the agent exports them as `AWS_*`
+inside each `sandbox_exec` call. Without `EXP_AWS_*` the aws CLI falls back to
+the sandbox's inherited host IAM role — `cloud_preflight` warns about that so
+jobs never land in the wrong account. Set only the providers you want —
+`cloud_preflight` tells the agent which are usable and it plans around the rest.
 
 ```bash
 npx --package @opencomputer/cli opencomputer env set AWS_ACCESS_KEY_ID --value-stdin

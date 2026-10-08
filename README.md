@@ -102,6 +102,10 @@ launches cloud jobs without approval.
 
 ## Notes
 
+- MCP tools are not exposed as flat named tools — the agent calls them through
+  Code Mode: inside `execute`, `tools["research-kb"].<tool>(args)`. The system
+  prompt documents this so the agent doesn't guess names like
+  `mcp-research-kb.kb_search` and misreport the server as missing.
 - `sandbox_exec` commands die at the call timeout; the runbooks therefore
   submit async cloud jobs and poll with short status calls.
 - The agent is instructed to tag every resource `program=triage-v5`, early-kill

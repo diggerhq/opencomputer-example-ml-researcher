@@ -7,6 +7,8 @@ description: End-to-end research loop — read the KB, design an experiment roun
 
 The loop is: KB → hypotheses → approved round → launch → benchmark → register → iterate. Do not reorder it.
 
+MCP calls go through Code Mode: inside `execute`, call `tools["research-kb"].<tool>(args)` (e.g. `await tools["research-kb"].baseline_model()`). There are no flat `research-kb_*` tool names — an `Unknown tool` error means the wrong call path, not a missing server.
+
 ## 1. Pin the targets
 
 - `baseline_model` (MCP): deployed model, suite, promotion metric, score.

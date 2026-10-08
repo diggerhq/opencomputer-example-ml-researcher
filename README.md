@@ -66,12 +66,14 @@ jobs never land in the wrong account. Set only the providers you want —
 `cloud_preflight` tells the agent which are usable and it plans around the rest.
 
 ```bash
-npx --package @opencomputer/cli opencomputer env set AWS_ACCESS_KEY_ID --value-stdin
-npx --package @opencomputer/cli opencomputer env set AWS_SECRET_ACCESS_KEY --value-stdin
-npx --package @opencomputer/cli opencomputer env set AWS_DEFAULT_REGION --value-stdin   # e.g. us-east-1
+npx --package @opencomputer/cli opencomputer env set EXP_AWS_ACCESS_KEY_ID --value-stdin
+npx --package @opencomputer/cli opencomputer env set EXP_AWS_SECRET_ACCESS_KEY --value-stdin
+npx --package @opencomputer/cli opencomputer env set EXP_AWS_DEFAULT_REGION --value-stdin   # e.g. us-east-1
 npx --package @opencomputer/cli opencomputer env set GCP_SERVICE_ACCOUNT_JSON --value-stdin
 npx --package @opencomputer/cli opencomputer env set GCP_PROJECT_ID --value-stdin
 ```
+
+(`env set AWS_*` is rejected — those names are platform-reserved.)
 
 (each value is piped on stdin, e.g. `printf %s "$VALUE" | opencomputer env set NAME --value-stdin`)
 
